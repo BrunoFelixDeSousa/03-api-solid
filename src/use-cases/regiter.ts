@@ -21,7 +21,7 @@ export async function registerUserCase({
   })
 
   if (userWithSameEmail) {
-    return replay.status(409).send()
+    throw new Error('E-mail already exists.')
   }
 
   await prisma.user.create({
